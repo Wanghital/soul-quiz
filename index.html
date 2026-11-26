@@ -491,7 +491,7 @@ h1 em::after{
         <span class="seal-hero" aria-hidden="true">灵魂图鉴</span>
         <p class="kicker">SOUL ARCHIVE · 卷一</p>
         <h1>测测你的灵魂<br>对应哪位<em>中国历史人物</em></h1>
-        <p class="lead">四十道生活化的选择，不考历史，只照见你。<br>十四位古人，在某一处等你。</p>
+        <p class="lead">四十道生活化的选择，不考历史，只照见你。<br>八十道题库随机抽取，十四位古人，在某一处等你。</p>
         <div class="start-wrap">
           <button class="btn-main" id="startBtn" type="button">开 卷</button>
           <span class="start-note">凭直觉作答，不必深思</span>
@@ -561,7 +561,7 @@ const DIMS = [
   { key: 'qu',   ch: '趣', name: '兴致', line: '对世界保持好奇，会玩也会享受' }
 ];
 
-const QUESTIONS = [
+const QUESTION_BANK = [
   { c: '日常', q: '早上闹钟响到第三遍，你通常——', o: [
     ['其实早醒了，躺着先把今天的事在脑子里过一遍', { mou: 2, quan: 1 }],
     ['一骨碌爬起来，先出门再说', { yong: 2, xia: 1 }],
@@ -805,8 +805,274 @@ const QUESTIONS = [
     ['“天下归心”', { quan: 2, qing: 1 }],
     ['“笔落惊风雨”', { wen: 1, yong: 1, qu: 1 }],
     ['“事了拂衣去”', { yin: 2, xia: 1 }]
+  ]},
+
+  { c: '日常', q: '通勤路上，你多半——', o: [
+    ['听点东西，顺便把今天的事过一遍', { mou: 2, wen: 1 }],
+    ['一路快走，就当锻炼', { yong: 2, quan: 1 }],
+    ['看窗外的人，猜他们在过什么日子', { wen: 1, qing: 1, qu: 1 }],
+    ['什么都不想，放空到站', { yin: 2, qu: 1 }]
+  ]},
+  { c: '日常', q: '冰箱里的存粮，通常——', o: [
+    ['有清单，按周补货', { mou: 2, quan: 1 }],
+    ['看到什么新鲜就买什么', { qu: 2, yin: 1 }],
+    ['常备一份，给突然来的人', { qing: 2, xia: 1 }],
+    ['只有能立刻吃的东西', { yong: 1, quan: 2 }]
+  ]},
+  { c: '日常', q: '换季整理衣柜，你会——', o: [
+    ['按场合、按季节分好', { mou: 2, quan: 1 }],
+    ['舍不得扔，每件都有故事', { qing: 2, wen: 1 }],
+    ['一次性清空，重新买', { yong: 2, quan: 1 }],
+    ['一直拖，拖到不得不做', { yin: 2, qu: 1 }]
+  ]},
+  { c: '日常', q: '你对“家”的要求，最看重——', o: [
+    ['安静，能一个人待住', { yin: 2, wen: 1 }],
+    ['方便，什么都在手边', { mou: 1, quan: 2 }],
+    ['有人气，朋友随时能来', { qing: 2, xia: 1 }],
+    ['好看，摆什么都有讲究', { wen: 2, qu: 1 }]
+  ]},
+  { c: '日常', q: '排队排了很久，你会——', o: [
+    ['掏出手机处理点事', { mou: 2, quan: 1 }],
+    ['跟旁边的人聊起来', { qing: 2, qu: 1 }],
+    ['找找有没有更快的路子', { yong: 2, quan: 1 }],
+    ['直接走人，改天再来', { yin: 2, yong: 1 }]
+  ]},
+  { c: '日常', q: '你手机相册里，最多的照片是——', o: [
+    ['风景、光影、路过的猫', { wen: 1, yin: 1, qu: 1 }],
+    ['家人和朋友的脸', { qing: 2, xia: 1 }],
+    ['截图、资料、备忘', { mou: 2, quan: 1 }],
+    ['自己折腾出来的东西', { yong: 1, qu: 2 }]
+  ]},
+  { c: '日常', q: '下雨天，你更想——', o: [
+    ['窝着看书，听雨', { yin: 2, wen: 1 }],
+    ['撑伞出去走一圈', { yong: 1, qu: 2 }],
+    ['约人吃饭，正好躲雨', { qing: 2, xia: 1 }],
+    ['把积压的事清掉', { mou: 2, quan: 1 }]
+  ]},
+  { c: '日常', q: '买东西时，你最容易被打动的是——', o: [
+    ['好用，参数漂亮', { mou: 2, quan: 1 }],
+    ['好看，有设计感', { wen: 2, qu: 1 }],
+    ['店员实在，不忽悠', { qing: 2, xia: 1 }],
+    ['少见，别人没有', { quan: 2, qu: 1 }]
+  ]},
+  { c: '处事', q: '三件事同时压过来，你先做——', o: [
+    ['最要紧的那件', { mou: 2, quan: 1 }],
+    ['最烦的那件，先解决掉', { yong: 2, xia: 1 }],
+    ['能帮到人的那件', { qing: 2, xia: 1 }],
+    ['自己最想做的那件', { yin: 1, qu: 2 }]
+  ]},
+  { c: '处事', q: '交出去的东西，你最在意——', o: [
+    ['有没有漏洞', { mou: 2, quan: 1 }],
+    ['好不好看', { wen: 2, qu: 1 }],
+    ['对方能不能直接用', { xia: 2, qing: 1 }],
+    ['有没有超出预期', { quan: 2, yong: 1 }]
+  ]},
+  { c: '处事', q: '合作时遇到拖后腿的人——', o: [
+    ['当面说清，把节点定死', { mou: 2, quan: 1 }],
+    ['自己补上，先做完', { xia: 2, yong: 1 }],
+    ['私下问问他怎么了', { qing: 2, mou: 1 }],
+    ['下次不带了', { yin: 2, quan: 1 }]
+  ]},
+  { c: '处事', q: '有人抢了你的功劳——', o: [
+    ['当场把过程说清楚', { yong: 2, quan: 1 }],
+    ['不争，用下一个结果说话', { mou: 2, xia: 1 }],
+    ['私下找他谈一次', { qing: 2, mou: 1 }],
+    ['算了，不值得耗', { yin: 2, xia: 1 }]
+  ]},
+  { c: '处事', q: '你更愿意接哪种活——', o: [
+    ['难的、没人碰过的', { yong: 2, mou: 1 }],
+    ['能署上名字的', { quan: 2, wen: 1 }],
+    ['能帮到具体的人的', { qing: 2, xia: 1 }],
+    ['时间自由、自己安排的', { yin: 2, qu: 1 }]
+  ]},
+  { c: '处事', q: '汇报时被追问细节——', o: [
+    ['提前都备好了', { mou: 2, quan: 1 }],
+    ['当场推演一遍给他看', { mou: 2, yong: 1 }],
+    ['老实说这块还没想透', { xia: 2, qing: 1 }],
+    ['换个角度把话圆回去', { wen: 1, quan: 2 }]
+  ]},
+  { c: '处事', q: '长期项目做到后半程——', o: [
+    ['按计划收尾，不加戏', { mou: 2, quan: 1 }],
+    ['还想再加点新东西', { qu: 2, wen: 1 }],
+    ['越做越怕做不好', { qing: 2, mou: 1 }],
+    ['已经在想下一个', { yong: 2, quan: 1 }]
+  ]},
+  { c: '处事', q: '别人提出一个更好的方案——', o: [
+    ['立刻改，谁对听谁', { mou: 2, xia: 1 }],
+    ['先评估风险再动', { mou: 2, quan: 1 }],
+    ['有点不服，但会采纳', { quan: 2, yong: 1 }],
+    ['谢他，并请他一起做', { qing: 2, xia: 1 }]
+  ]},
+  { c: '处事', q: '判断一个人靠不靠谱，你看——', o: [
+    ['他说到做到', { xia: 2, mou: 1 }],
+    ['他做事的方法', { mou: 2, quan: 1 }],
+    ['他对弱者的态度', { qing: 2, xia: 1 }],
+    ['他有没有自己的东西', { wen: 2, yin: 1 }]
+  ]},
+  { c: '处事', q: '如果必须放弃一样，你选——', o: [
+    ['收入', { yin: 2, yong: 1 }],
+    ['名声', { yin: 1, wen: 2 }],
+    ['自由', { quan: 2, yong: 1 }],
+    ['身边的人', { qing: 2, xia: 1 }]
+  ]},
+  { c: '社交', q: '新同事入职第一天，你会——', o: [
+    ['主动带他走一圈', { qing: 2, xia: 1 }],
+    ['先观察，合适的再深交', { mou: 2, yin: 1 }],
+    ['把该给的资料一次给全', { mou: 1, xia: 2 }],
+    ['拉他一起吃个饭', { qu: 2, qing: 1 }]
+  ]},
+  { c: '社交', q: '聚会散场，你通常——', o: [
+    ['送人到最后', { qing: 2, xia: 1 }],
+    ['先走，不喜欢告别', { yin: 2, yong: 1 }],
+    ['抢着把单结了', { quan: 2, xia: 1 }],
+    ['张罗下一场', { qu: 2, yong: 1 }]
+  ]},
+  { c: '社交', q: '饭桌上有人拿你开玩笑——', o: [
+    ['笑着接住，再还一句', { yong: 1, wen: 1, quan: 1 }],
+    ['不接，沉默过去', { yin: 2, qing: 1 }],
+    ['直接说我不喜欢', { yong: 2, xia: 1 }],
+    ['心里记下，以后少来往', { yin: 1, quan: 2 }]
+  ]},
+  { c: '社交', q: '你更愿意在哪儿认识人——', o: [
+    ['线下，见得到人', { xia: 2, qing: 1 }],
+    ['网上，先聊明白', { mou: 2, yin: 1 }],
+    ['都行，看对不对味', { qu: 2, qing: 1 }],
+    ['其实不太想认识新人', { yin: 2, quan: 1 }]
+  ]},
+  { c: '社交', q: '有人找你借钱——', o: [
+    ['看关系，能借就借', { qing: 2, xia: 1 }],
+    ['先问清用途和期限', { mou: 2, quan: 1 }],
+    ['直说没有', { yong: 2, yin: 1 }],
+    ['借一点，不伤和气', { qing: 1, xia: 1, mou: 1 }]
+  ]},
+  { c: '社交', q: '你回消息的速度——', o: [
+    ['看到就回', { xia: 2, qing: 1 }],
+    ['想清楚再回', { mou: 2, wen: 1 }],
+    ['常忘，攒一堆一起回', { yin: 2, qu: 1 }],
+    ['看是谁，重要的人秒回', { quan: 2, mou: 1 }]
+  ]},
+  { c: '社交', q: '一群人拍照，你通常——', o: [
+    ['站边上，别挡人', { yin: 2, qing: 1 }],
+    ['拿手机帮大家拍', { qing: 2, xia: 1 }],
+    ['站中间', { quan: 2, yong: 1 }],
+    ['出主意，安排姿势', { qu: 2, wen: 1 }]
+  ]},
+  { c: '社交', q: '老朋友很久没联系，你会——', o: [
+    ['主动发一句“最近怎么样”', { qing: 2, xia: 1 }],
+    ['等对方先开口', { yin: 2, mou: 1 }],
+    ['找个由头约饭', { qu: 2, qing: 1 }],
+    ['心里记着，不打扰', { wen: 2, qing: 1 }]
+  ]},
+  { c: '情绪', q: '被当众表扬，你会——', o: [
+    ['有点不好意思', { qing: 2, yin: 1 }],
+    ['顺势讲两句', { quan: 2, yong: 1 }],
+    ['把功劳分给团队', { xia: 2, qing: 1 }],
+    ['心里记下这一刻', { wen: 2, qu: 1 }]
+  ]},
+  { c: '情绪', q: '连续几天都很累，你会——', o: [
+    ['硬扛到周末', { yong: 2, xia: 1 }],
+    ['请一天假，谁也不见', { yin: 2, yong: 1 }],
+    ['找人吃顿好的', { qu: 2, qing: 1 }],
+    ['重排优先级，砍掉一些', { mou: 2, quan: 1 }]
+  ]},
+  { c: '情绪', q: '最让你睡不着的是——', o: [
+    ['没做完的事', { mou: 2, quan: 1 }],
+    ['说错的一句话', { qing: 2, wen: 1 }],
+    ['还没去过的地方', { qu: 2, yong: 1 }],
+    ['被人看轻的那一下', { quan: 2, yong: 1 }]
+  ]},
+  { c: '情绪', q: '看到别人过得很好，你——', o: [
+    ['真心替他高兴', { qing: 2, xia: 1 }],
+    ['有点急，想追上去', { quan: 2, yong: 1 }],
+    ['关掉手机，过自己的', { yin: 2, wen: 1 }],
+    ['研究他是怎么做到的', { mou: 2, qu: 1 }]
+  ]},
+  { c: '情绪', q: '难过的时候，你最不想要——', o: [
+    ['被追问原因', { yin: 2, qing: 1 }],
+    ['被安慰', { yong: 1, quan: 2 }],
+    ['一个人待着', { qing: 2, xia: 1 }],
+    ['被当成没事', { wen: 1, qing: 2 }]
+  ]},
+  { c: '情绪', q: '一件小事让你突然感动，你会——', o: [
+    ['记很久', { wen: 2, qing: 1 }],
+    ['当场说出口', { qing: 2, yong: 1 }],
+    ['做点什么回报', { xia: 2, mou: 1 }],
+    ['写下来，或者拍下来', { wen: 1, qu: 2 }]
+  ]},
+  { c: '情绪', q: '你对“遗憾”的态度——', o: [
+    ['反复想，想明白为止', { mou: 2, qing: 1 }],
+    ['接受，往前看', { yong: 2, yin: 1 }],
+    ['记着，但不说', { yin: 2, wen: 1 }],
+    ['想办法补回来', { quan: 2, xia: 1 }]
+  ]},
+  { c: '兴趣', q: '周末更愿意去——', o: [
+    ['博物馆、展览', { wen: 2, qu: 1 }],
+    ['山里、江边', { yin: 2, qu: 1 }],
+    ['球场、健身房', { yong: 2, quan: 1 }],
+    ['朋友家，吃饭聊天', { qing: 2, xia: 1 }]
+  ]},
+  { c: '兴趣', q: '你会为什么样的手艺着迷——', o: [
+    ['需要耐心的', { yin: 2, wen: 1 }],
+    ['需要动手的', { yong: 1, qu: 2 }],
+    ['需要算的', { mou: 2, quan: 1 }],
+    ['需要照顾人的', { qing: 2, xia: 1 }]
+  ]},
+  { c: '兴趣', q: '你更愿意读——', o: [
+    ['一个人的一生', { wen: 2, qing: 1 }],
+    ['一个时代的兴衰', { mou: 2, quan: 1 }],
+    ['一本马上能用的工具书', { mou: 1, quan: 2 }],
+    ['一本没什么用的闲书', { yin: 2, qu: 1 }]
+  ]},
+  { c: '兴趣', q: '旅行时你最想看——', o: [
+    ['当地人的日常', { qing: 2, qu: 1 }],
+    ['建筑和器物', { wen: 1, mou: 2 }],
+    ['野路子和没人去的地方', { yong: 1, yin: 2 }],
+    ['最好吃的那几家', { qu: 2, quan: 1 }]
+  ]},
+  { c: '兴趣', q: '你对“玩”的理解是——', o: [
+    ['把自己扔进陌生里', { qu: 2, yong: 1 }],
+    ['把一件事做到极致', { mou: 2, wen: 1 }],
+    ['和人一起热闹', { qing: 2, qu: 1 }],
+    ['一个人安静地待着', { yin: 2, wen: 1 }]
+  ]},
+  { c: '兴趣', q: '如果学一门新东西，你选——', o: [
+    ['一门乐器', { wen: 2, qu: 1 }],
+    ['一门语言', { mou: 2, qu: 1 }],
+    ['一项运动', { yong: 2, qu: 1 }],
+    ['一门手艺', { xia: 1, yin: 1, qu: 1 }]
+  ]},
+  { c: '兴趣', q: '你更愿意收藏——', o: [
+    ['老物件', { wen: 2, yin: 1 }],
+    ['票根和照片', { qing: 2, wen: 1 }],
+    ['限量款', { quan: 2, qu: 1 }],
+    ['趁手的工具', { mou: 2, xia: 1 }]
   ]}
 ];
+
+const TEST_LEN = 40;
+const DRAW_PLAN = { '日常': 8, '处事': 10, '社交': 8, '情绪': 7, '兴趣': 7 };
+
+function shuffleInPlace(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const t = arr[i]; arr[i] = arr[j]; arr[j] = t;
+  }
+  return arr;
+}
+
+function drawQuestions() {
+  const out = [];
+  Object.keys(DRAW_PLAN).forEach(c => {
+    const pool = QUESTION_BANK.filter(q => q.c === c);
+    shuffleInPlace(pool);
+    out.push.apply(out, pool.slice(0, DRAW_PLAN[c]));
+  });
+  shuffleInPlace(out);
+  return out.slice(0, TEST_LEN);
+}
+
+let QUESTIONS = drawQuestions();
+
 
 const PERSONAS = [
   {
@@ -972,11 +1238,11 @@ const PERSONAS = [
    3) 与人物轮廓做相关系数匹配，并给"主导维度"一点加权
    ============================================================ */
 
-const BANK = (() => {
+function computeBank(qs) {
   const out = {};
   DIMS.forEach(d => {
     let mean = 0, variance = 0;
-    QUESTIONS.forEach(q => {
+    qs.forEach(q => {
       const ws = q.o.map(o => o[1][d.key] || 0);
       const m = ws.reduce((a, b) => a + b, 0) / 4;
       mean += m;
@@ -985,7 +1251,9 @@ const BANK = (() => {
     out[d.key] = { mean, sd: Math.sqrt(variance) || 1 };
   });
   return out;
-})();
+}
+
+let BANK = computeBank(QUESTIONS);
 
 const PERSONA_PROFILES = PERSONAS.map(p => {
   const vals = DIMS.map(d => p.v[d.key] || 0);
@@ -1075,6 +1343,8 @@ function matchPersonas(profile) {
 
   /* ---------------- 首页 ---------------- */
   $('startBtn').addEventListener('click', () => {
+    QUESTIONS = drawQuestions();
+    BANK = computeBank(QUESTIONS);
     state.index = 0;
     state.answers = new Array(QUESTIONS.length).fill(null);
     state.locked = false;
@@ -1278,6 +1548,8 @@ function matchPersonas(profile) {
 
     $('copyBtn').addEventListener('click', () => copyResult(p, pct));
     $('retryBtn').addEventListener('click', () => {
+      QUESTIONS = drawQuestions();
+      BANK = computeBank(QUESTIONS);
       state.answers = new Array(QUESTIONS.length).fill(null);
       state.index = 0;
       show('quiz');
